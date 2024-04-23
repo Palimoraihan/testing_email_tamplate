@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>CKEditor 5 – Classic editor</title>
+		<script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+	</head>
+	<body>
+		<h1>Classic editor</h1>
+		<div id="editor">
+			<p>This is some sample content.</p>
+		</div>
+		<script>
+			let editor;
+			ClassicEditor.create(document.querySelector('#editor'))
+				.then((newEditor) => {
+					editor = newEditor;
+				})
+				.catch((error) => {
+					console.error(error);
+				});
+			parent.connect_content_to_flutter &&
+				parent.connect_content_to_flutter(window);
+			function getValue() {
+				const editorData =editor.getData();
+                console.log(editorData);
+			}
+		</script>
+	</body>
+</html>
